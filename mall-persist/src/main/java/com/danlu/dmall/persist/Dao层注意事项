@@ -1,0 +1,44 @@
+1、注释：
+	接口注释与方法注释都需要注明，对于方法注释需要明确说明该方法的作用，入参数据字段表明的意思，返回数据表明的意思
+	注意：当数据库字段变更等，接口注释对应做相应修改
+	例：
+		/**
+	     * 
+	     * @Title:	queryUserInfo 
+	     * @Description:	多条件查询用户信息（查询结果按照用户创建时间降序排序）
+	     * @param: 以下为查询参数中map的key的说明，多个参数为并且的关系
+	     * @param: deleteStatus ： 用户状态:01-启用,02-禁用,99-删除
+	     * @param: userType ： 用户类型:01-运营人员,02-客户
+	     * @param: userStatusList ： 用户状态集合List<String>
+	     * @param: userIdList ： 用户id集合List<String>
+	     * @param: userAccount ： 用户帐号 全平台唯一
+	     * @param: userId ：用户ID,UUID
+	     * @param: mobileNumber ： 用户手机号码,全平台唯一
+	     * @param: email ： 用户邮箱
+	     * @param: userSex ： 用户性别:0-男;1-女
+	     * @param: startTime ： 注册时间等于或者大于该时间
+	     * @param: index ： 偏移量（分页参数）
+	     * @param: count ： 指定返回条数（分页参数）
+	     * @return:	List<UserInfoEntity>
+	     */
+	    List<UserEntity> queryUserInfo(Map<String, Object> params);
+
+2、包路径：
+	接口需要放在com.danlu.工程名称.dao.entity包下
+	
+3、命名：
+	接口的结尾使用用Dao结尾
+	接口名称与对应的xml文件名称尽量保持一样
+
+entity相关注意事项
+	
+	1、类命名尽量和对应的表相关
+	2、类的结尾命名使用用Entity
+	3、类需要放在com.danlu.工程名称.persist.entity包下
+	4、类的字段注释需要加上，对应字段有具体的常量值也需要注释到字段上并且始终保持与数据库表字段注释保持一致
+		例：//用户类型:01-运营人员,02-客户
+		
+mapper.xml文件注意事项
+	1、使用丹露的生成工具生成xml和对应的dao接口代码必须有
+	2、工具生成的代码不需要写对应的单元测试
+	3、工具生成的代码不符合要求可以自己编写同时完成对应的单元测试

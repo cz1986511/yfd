@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tool="http://www.springframework.org/schema/tool"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	                    http://www.springframework.org/schema/context
+	                    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	                    http://www.springframework.org/schema/tx
+	                    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	                    http://www.springframework.org/schema/aop 
+	                    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	                    http://www.springframework.org/schema/tool	                    
+	                    http://www.springframework.org/schema/tool/spring-tool-4.0.xsd
+	                 	http://www.springframework.org/schema/mvc
+	                    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<import resource="classpath*:config/matrix.xml"/>
+	<import resource="classpath*:config/codis-config.xml"/>
+	<import resource="classpath*:config/application-context-http.xml"/>
+	<import resource="classpath*:config/mybatis-config.xml"/>
+	<import resource="classpath*:config/core-config.xml"/>
+	<import resource="classpath*:config/service-config.xml"/>
+	
+	<bean id="centerBase" class="com.danlu.dlcommon.utils.CenterBase">
+        <!-- 用户中心 -->
+        <property name="ucBase" value="${usercenter.base}" />
+        <!-- 商品中心 -->
+        <property name="icBase" value="${itemcenter.base}" />
+        <!-- 交易中心 -->
+        <property name="tcBase" value="${tradecenter.base}" />
+        <!-- 营销中心 -->
+        <property name="scBase" value="${salecenter.base}" />
+        <!-- 支付中心 -->
+        <property name="pcBase" value="${paycenter.base}" />
+        <!-- 客户管理中心 -->
+        <property name="crmcBase" value="${crmcenter.base}" />
+        <!-- 广告中心 -->
+        <property name="adscBase" value="${adscenter.base}" />
+        <!-- 活动中心 -->
+        <property name="dlpromotionXBase" value="${dlpromotionx.base}" />
+        <!-- 公共中心 -->
+        <property name="publicBase" value="${publiccenter.base}" />
+    </bean>
+    <!-- solr -->
+    <bean id="solrCommon" class="com.danlu.dmall.service.util.DmallSolrCommon">
+        <property name="solrUrl" value="${solr.url}" />
+        <property name="itemCore" value="${solr.item.core}" />
+        <property name="shopCore" value="${solr.shop.core}" />
+    </bean>
+</beans>
